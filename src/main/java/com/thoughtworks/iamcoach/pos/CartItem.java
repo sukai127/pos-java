@@ -1,7 +1,31 @@
 package com.thoughtworks.iamcoach.pos;
 
-/**
- * Created by sukai on 10/9/14.
- */
 public class CartItem {
+    private Product product;
+    private double count;
+
+    public CartItem(){
+
+    }
+
+    public CartItem(Product product, double count) {
+        this.product = product;
+        this.count = count;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public double getCount() {
+        return count;
+    }
+
+    public void setCount(double count) {
+        this.count = count;
+    }
 }
