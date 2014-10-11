@@ -35,7 +35,7 @@ public class BarcodeScannerTest {
         List<CartItem> cartItemList = barcodeScanner.scan(list);
 
         assertThat(cartItemList.size()).isEqualTo(3);
-        assertThat(cartItemList.get(1).getCount()).isEqualTo(2.5);
+        assertThat(cartItemList.get(0).getCount()).isEqualTo(2);
         assertThat(cartItemList.get(0).getProduct().getName()).isEqualTo("雪碧");
     }
 }
