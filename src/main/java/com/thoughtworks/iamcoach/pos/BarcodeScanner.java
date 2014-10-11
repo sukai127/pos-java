@@ -3,7 +3,7 @@ package com.thoughtworks.iamcoach.pos;
 import java.io.IOException;
 import java.util.List;
 
-public class BarcodeScanner {
+public class BarcodeScanner{
     public Product getProduct(String barcode) throws IOException {
 
         DataProvider dataProvider = new DataProvider();
@@ -14,6 +14,10 @@ public class BarcodeScanner {
                 return product;
             }
         }
+        return null;
+    }
+
+    public List<CartItem> scan(List barcodes) {
         return null;
     }
 }
