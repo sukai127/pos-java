@@ -23,7 +23,7 @@ public class DataProvider {
             Product product = this.buildProduct(str);
             productList.add(product);
         }
-        
+
         return productList;
     }
 }
