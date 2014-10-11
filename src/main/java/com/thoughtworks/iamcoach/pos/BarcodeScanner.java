@@ -1,9 +1,10 @@
 package com.thoughtworks.iamcoach.pos;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class BarcodeScanner{
+public class BarcodeScanner implements Scanner{
     public Product getProduct(String barcode) throws IOException {
 
         DataProvider dataProvider = new DataProvider();
@@ -17,7 +18,8 @@ public class BarcodeScanner{
         return null;
     }
 
-    public List<CartItem> scan(List barcodes) {
+    @Override
+    public List scan(List<String> barcodes) {
         return null;
     }
 }
