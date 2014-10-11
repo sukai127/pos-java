@@ -23,22 +23,7 @@ public class BarcodeScanner implements Scanner{
         List<CartItem> cartitemList = new ArrayList<CartItem>();
 
         for(String str : barcodes){
-            String []fields = str.split("-");
-            String barcode = str.split("-")[0];
-            double count = 1;
-            if(fields.length>1){
-                count = Double.parseDouble(fields[1]);
-            }
-            Product product = this.getProduct(barcode);
-            int index = this.getIndex(barcode,cartitemList);
-            if( index == -1){
-                CartItem cartitem = new CartItem(product,count);
-                cartitemList.add(cartitem);
-            }else{
-                CartItem cartitem = cartitemList.get(index);
-                cartitem.setCount(cartitem.getCount()+1);
-                cartitemList.set(index,cartitem);
-            }
+            cartitemList = this.addCount(str,cartitemList);
         }
         return cartitemList;
     }
@@ -51,5 +36,35 @@ public class BarcodeScanner implements Scanner{
             }
         }
         return -1;
+    }
+
+    private List<CartItem> addCount(String str, List<CartItem> cartitemList) throws IOException {
+
+        String []fields = str.split("-");
+        String barcode = fields[0];
+        double count = this.getCount(fields);
+
+        Product product = this.getProduct(barcode);
+        int index = this.getIndex(barcode,cartitemList);
+
+        if( index == -1){
+            CartItem cartitem = new CartItem(product,count);
+            cartitemList.add(cartitem);
+        }else{
+            CartItem cartitem = cartitemList.get(index);
+            cartitem.setCount(cartitem.getCount()+1);
+            cartitemList.set(index,cartitem);
+        }
+        return cartitemList;
+    }
+    
+    private double getCount(String []fields){
+
+        double count = 1;
+
+        if(fields.length>1){
+            count = Double.parseDouble(fields[1]);
+        }
+        return count;
     }
 }
