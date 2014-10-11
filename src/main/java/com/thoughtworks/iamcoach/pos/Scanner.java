@@ -1,7 +1,7 @@
 package com.thoughtworks.iamcoach.pos;
 
-/**
- * Created by sukai on 10/9/14.
- */
+import java.util.*;
+
 public interface Scanner {
+    public List scan();
 }
