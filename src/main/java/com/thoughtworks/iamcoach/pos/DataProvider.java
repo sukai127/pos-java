@@ -15,6 +15,15 @@ public class DataProvider {
     }
 
     public List<Product> getProductList() throws IOException {
-        return null;
+
+        List<Product> productList = new ArrayList<Product>();
+        List<String> productStringList = FileHelper.get("products.txt");
+
+        for(String str : productStringList){
+            Product product = this.buildProduct(str);
+            productList.add(product);
+        }
+        
+        return productList;
     }
 }
