@@ -1,8 +1,9 @@
 package com.thoughtworks.iamcoach.pos;
 
-/**
- * Created by sukai on 10/11/14.
- */
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class DataProvider {
     public Product buildProduct(String productString) {
 
@@ -11,5 +12,9 @@ public class DataProvider {
 
         Product product = new Product(fields[0],fields[1],fields[2],price);
         return product;
+    }
+
+    public List<Product> getProductList() throws IOException {
+        return null;
     }
 }
