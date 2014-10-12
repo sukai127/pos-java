@@ -18,7 +18,7 @@ public class PromotionHelperTest {
         list.add(1);
         list.add(2);
 
-        Product product = new Product("ITEM000000","可乐","瓶",3.00,list);
+        Product product = new Product("ITEM000001","可乐","瓶",3.00,list);
         CartItem cartItem = new CartItem(product,6);
         PromotionHelper  promotionHelper = new PromotionHelper();
 
