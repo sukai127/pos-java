@@ -18,7 +18,7 @@ public class DataProviderTest {
     }
 
     @Test
-    public void should_return_an_product_object(){
+    public void should_return_an_product_object() throws IOException {
 
         String str = "ITEM000005,方便面,袋,4.50";
 

@@ -14,11 +14,12 @@ public class Product {
 
     }
 
-    public Product(String barcode, String name, String unit, double price) {
+    public Product(String barcode, String name, String unit, double price, List<Integer> promotionTypes) {
         this.barcode = barcode;
         this.name = name;
         this.unit = unit;
         this.price = price;
+        this.promotionTypes = promotionTypes;
     }
 
     public double getPrice() {

@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataProvider {
-    public Product buildProduct(String productString) {
+    public Product buildProduct(String productString) throws IOException {
 
         String []fields = productString.split(",");
         double price = Double.parseDouble(fields[3]);
 
-        Product product = new Product(fields[0],fields[1],fields[2],price);
+        List<Integer> list = this.getPromotionTypeList(fields[0]);
+        Product product = new Product(fields[0],fields[1],fields[2],price,list);
         return product;
     }
 
