@@ -37,12 +37,29 @@ public class Pos {
         List<CartItem> cartItemList = this.getScanner().scan(barcodes);
 
         StringBuffer stringBuffer = new StringBuffer("\t\t\t\t\t let us go购物清单 \t\t\t\t\t\t\n\n");
-        
+
         stringBuffer.append("\t\t\t\t\t\t\t\t\t"+this.getDate()+"\n\n");
         stringBuffer.append("\t名称 \t\t单位 \t\t价格 \t\t数量 \t\t小计\n\n");
         stringBuffer.append(buildCartItemString(cartItemList));
+        stringBuffer.append(buildTotalMoneyString(cartItemList));
 
         System.out.println(stringBuffer.toString());
+    }
+
+    private String buildTotalMoneyString(List<CartItem> cartItemList){
+
+        double totalMoney = 0.0;
+        double discountMoney;
+        double finalMoney = 0.0;
+
+        for(CartItem cartItem : cartItemList){
+            totalMoney += cartItem.getCount() * cartItem.getProduct().getPrice();
+            finalMoney += this.getPromotionHelper().calculateMoney(cartItem);
+        }
+        discountMoney = totalMoney - finalMoney;
+        return "\n\t\t\t\t\t\t\t\t\t\t\t优惠前:"+ totalMoney+
+                "\n\t\t\t\t\t\t\t\t\t\t\t优惠后:" + finalMoney +
+                "\n\t\t\t\t\t\t\t\t\t\t\t优惠差价:"+discountMoney;
     }
 
     private String buildCartItemString(List<CartItem> cartItemList){
