@@ -27,7 +27,31 @@ public class DataProvider {
         return productList;
     }
 
-    public List<Integer> getPromotionTypeList(String barcode) {
-        return null;
+    public List<Integer> getPromotionTypeList(String barcode) throws IOException {
+
+        List<String> buyTwoGetOneList = FileHelper.get("buy_two_get_one_free_promotion.txt");
+        List<String> secondHalfPriceList = FileHelper.get("second_half_price_promotion.txt");
+        List<String> discountList = FileHelper.get("discount_promotion.txt");
+        List<Integer> promotionList = new ArrayList<Integer>();
+
+        if(buyTwoGetOneList.contains(barcode)){
+            promotionList.add(Promotion.BUY_TWO_GET_ONE);
+        }
+        if(secondHalfPriceList.contains(barcode)){
+            promotionList.add(Promotion.SECOND_HALF_PRICE);
+        }
+        if(isExist(discountList,barcode)){
+            promotionList.add(Promotion.DISCOUNT);
+        }
+        return promotionList;
+    }
+
+    private boolean isExist(List<String> discountList, String barcode) {
+        for(String str : discountList){
+            if(str.contains(barcode)){
+                return true;
+            }
+        }
+        return false;
     }
 }
