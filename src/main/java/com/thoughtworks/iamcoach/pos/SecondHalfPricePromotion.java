@@ -1,7 +1,9 @@
 package com.thoughtworks.iamcoach.pos;
 
-/**
- * Created by sukai on 10/12/14.
- */
-public class SecondHalfPricePromotion {
+public class SecondHalfPricePromotion extends Promotion {
+
+    @Override
+    public double getMoney(CartItem cartItem) {
+        return 0;
+    }
 }
