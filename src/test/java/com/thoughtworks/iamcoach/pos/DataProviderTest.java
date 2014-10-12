@@ -33,6 +33,7 @@ public class DataProviderTest {
 
         assertThat(productList.size()).isEqualTo(6);
         assertThat(productList.get(0).getName()).isEqualTo("可乐");
+        assertThat(productList.get(1).getPromotionTypes().size()).isEqualTo(3);
     }
 
     @Test
