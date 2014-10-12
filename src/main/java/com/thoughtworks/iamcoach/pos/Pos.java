@@ -36,10 +36,10 @@ public class Pos {
 
         List<CartItem> cartItemList = this.getScanner().scan(barcodes);
 
-        StringBuffer stringBuffer = new StringBuffer("\t\t\t\t\t let us go购物清单 \t\t\t\t\t\t\n\n");
+        StringBuffer stringBuffer = new StringBuffer("\t\t\t let us go购物清单 \t\t\t\n\n");
 
-        stringBuffer.append("\t\t\t\t\t\t\t\t\t"+this.getDate()+"\n\n");
-        stringBuffer.append("\t名称 \t\t单位 \t\t价格 \t\t数量 \t\t小计\n\n");
+        stringBuffer.append("\t\t\t\t\t"+this.getDate()+"\n\n");
+        stringBuffer.append("\t名称 \t单位 \t价格 \t数量 \t小计\n\n");
         stringBuffer.append(buildCartItemString(cartItemList));
         stringBuffer.append(buildTotalMoneyString(cartItemList));
 
@@ -57,9 +57,9 @@ public class Pos {
             finalMoney += this.getPromotionHelper().calculateMoney(cartItem);
         }
         discountMoney = totalMoney - finalMoney;
-        return "\n\t\t\t\t\t\t\t\t\t\t\t优惠前:"+ totalMoney+
-                "\n\t\t\t\t\t\t\t\t\t\t\t优惠后:" + finalMoney +
-                "\n\t\t\t\t\t\t\t\t\t\t\t优惠差价:"+discountMoney;
+        return "\n\t\t\t\t\t\t\t优惠前:"+ totalMoney+
+                "\n\t\t\t\t\t\t\t优惠后:" + finalMoney +
+                "\n\t\t\t\t\t\t\t优惠差价:"+discountMoney;
     }
 
     private String buildCartItemString(List<CartItem> cartItemList){
@@ -67,10 +67,10 @@ public class Pos {
         StringBuffer stringBuffer = new StringBuffer();
 
         for(CartItem cartItem:cartItemList){
-            stringBuffer.append("\t"+cartItem.getProduct().getName()+" \t");
-            stringBuffer.append(" \t"+cartItem.getProduct().getUnit()+" \t\t");
-            stringBuffer.append(" \t"+cartItem.getProduct().getPrice()+" \t");
-            stringBuffer.append(" \t"+cartItem.getCount()+" \t");
+            stringBuffer.append("\t"+cartItem.getProduct().getName());
+            stringBuffer.append(" \t"+cartItem.getProduct().getUnit()+"\t");
+            stringBuffer.append(" \t"+cartItem.getProduct().getPrice());
+            stringBuffer.append(" \t"+cartItem.getCount());
             stringBuffer.append(" \t"+this.getPromotionHelper().calculateMoney(cartItem)+"\n");
         }
         return stringBuffer.toString();
