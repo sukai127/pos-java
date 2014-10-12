@@ -35,9 +35,19 @@ public class Pos {
     public void printInventory(List<String> barcodes) throws Exception {
 
         List<CartItem> cartItemList = this.getScanner().scan(barcodes);
+
         StringBuffer stringBuffer = new StringBuffer("\t\t\t\t\t let us go购物清单 \t\t\t\t\t\t\n\n");
+        
         stringBuffer.append("\t\t\t\t\t\t\t\t\t"+this.getDate()+"\n\n");
         stringBuffer.append("\t名称 \t\t单位 \t\t价格 \t\t数量 \t\t小计\n\n");
+        stringBuffer.append(buildCartItemString(cartItemList));
+
+        System.out.println(stringBuffer.toString());
+    }
+
+    private String buildCartItemString(List<CartItem> cartItemList){
+
+        StringBuffer stringBuffer = new StringBuffer();
 
         for(CartItem cartItem:cartItemList){
             stringBuffer.append("\t"+cartItem.getProduct().getName()+" \t");
@@ -46,7 +56,7 @@ public class Pos {
             stringBuffer.append(" \t"+cartItem.getCount()+" \t");
             stringBuffer.append(" \t"+this.getPromotionHelper().calculateMoney(cartItem)+"\n");
         }
-        System.out.println(stringBuffer.toString());
+        return stringBuffer.toString();
     }
 
     private String getDate(){
