@@ -34,4 +34,13 @@ public class DataProviderTest {
         assertThat(productList.size()).isEqualTo(6);
         assertThat(productList.get(0).getName()).isEqualTo("可乐");
     }
+
+    @Test
+    public void should_return_promotion_list_when_input_barcode() throws IOException {
+
+        List<Integer> list = dataProvider.getPromotionTypeList("ITEM000001");
+
+        assertThat(list.size()).isEqualTo(3);
+        assertThat(list.get(0)).isEqualTo(Promotion.BUY_TWO_GET_ONE);
+    }
 }

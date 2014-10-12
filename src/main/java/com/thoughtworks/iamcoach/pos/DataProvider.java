@@ -26,4 +26,8 @@ public class DataProvider {
 
         return productList;
     }
+
+    public List<Integer> getPromotionTypeList(String barcode) {
+        return null;
+    }
 }
