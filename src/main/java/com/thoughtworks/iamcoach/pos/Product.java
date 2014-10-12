@@ -1,11 +1,14 @@
 package com.thoughtworks.iamcoach.pos;
 
+import java.util.List;
+
 public class Product {
 
     private String barcode;
     private String name;
     private String unit;
     private double price;
+    private List<Integer> promotionTypes;
 
     public Product() {
 
@@ -48,5 +51,13 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Integer> getPromotionTypes() {
+        return promotionTypes;
+    }
+
+    public void setPromotionTypes(List<Integer> promotionTypes) {
+        this.promotionTypes = promotionTypes;
     }
 }

@@ -3,6 +3,7 @@ package com.thoughtworks.iamcoach.pos;
 public class CartItem {
     private Product product;
     private double count;
+    private double money;
 
     public CartItem(){
 
@@ -27,5 +28,13 @@ public class CartItem {
 
     public void setCount(double count) {
         this.count = count;
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
     }
 }
