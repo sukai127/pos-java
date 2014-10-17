@@ -5,6 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataProvider {
+
+    private static List<String> buyTwoGetOneList;
+    private static List<String> secondHalfPriceList;
+    private static List<String> discountList;
+
+    static{
+        try {
+
+            buyTwoGetOneList = FileHelper.get("buy_two_get_one_free_promotion.txt");
+            secondHalfPriceList = FileHelper.get("second_half_price_promotion.txt");
+            discountList = FileHelper.get("discount_promotion.txt");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public Product buildProduct(String productString) throws IOException {
 
         String []fields = productString.split(",");
@@ -30,9 +46,6 @@ public class DataProvider {
 
     public List<Integer> getPromotionTypeList(String barcode) throws IOException {
 
-        List<String> buyTwoGetOneList = FileHelper.get("buy_two_get_one_free_promotion.txt");
-        List<String> secondHalfPriceList = FileHelper.get("second_half_price_promotion.txt");
-        List<String> discountList = FileHelper.get("discount_promotion.txt");
         List<Integer> promotionList = new ArrayList<Integer>();
 
         if(buyTwoGetOneList.contains(barcode)){
