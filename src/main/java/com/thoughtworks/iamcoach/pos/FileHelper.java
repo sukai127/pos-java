@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FileHelper {
 
-    public static List get (String filename) throws IOException {
+    public static List<String> get (String filename) throws IOException {
 
         String filepath = FileHelper.class.getClassLoader().getResource(filename).getPath();
         Path path = FileSystems.getDefault().getPath(filepath);
